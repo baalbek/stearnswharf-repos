@@ -1,0 +1,20 @@
+apply plugin: 'java'
+group = 'rcstadheim'
+archivesBaseName = 'stearnswharf'
+
+version = "1.0"
+
+repositories {
+    mavenCentral()
+}
+          
+
+dependencies {
+    compile "log4j:log4j:$log4jVersion"
+    compile "org.mybatis:mybatis:$mybatisVersion"
+    compile "postgresql:postgresql:$postgresVersion"
+}
+
+task cj(type: Copy, dependsOn: [build]) {
+    into '../harborview/dist' from new File("$libsDir/stearnswharf-${version}.jar")
+}
