@@ -7,6 +7,17 @@ package stearnswharf.systems;
 public class ProjectBean {
     private int oid;
     private String projectName;
+    private Boolean selected;
+
+    public ProjectBean() {
+    }
+    public ProjectBean(int oid,
+                       String projectName,
+                       Boolean selected) {
+        this.oid = oid;
+        this.projectName = projectName;
+        this.selected = selected;
+    }
 
     public int getOid() {
         return oid;
@@ -22,5 +33,22 @@ public class ProjectBean {
 
     public void setProjectName(String projectName) {
         this.projectName = projectName;
+    }
+
+    public Boolean isSelected() {
+        return selected;
+    }
+
+    public void setSelected(Boolean selected) {
+        this.selected = selected;
+    }
+
+    public String toHtml() {
+        if (oid == -1) {
+            return "-";
+        }
+        else {
+            return String.format("%d - %s", oid, projectName);
+        }
     }
 }
