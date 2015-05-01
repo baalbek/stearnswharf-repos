@@ -9,7 +9,7 @@ public class FloorPlanBean {
     private int floorPlan;
     private String buildingDsc;
     private String systemDsc;
-    private List<SystemBean> systemElements;
+    private List<VinapuElementBean> vinapuElements;
 
 
     public int getSystemId() {
@@ -60,11 +60,11 @@ public class FloorPlanBean {
         this.systemDsc = systemDsc;
     }
 
-    public List<SystemBean> getSystemElements() {
-        return systemElements;
+    public List<VinapuElementBean> getVinapuElements() {
+        return vinapuElements;
     }
 
-    public void setSystemElements(List<SystemBean> systemElements) {
-        this.systemElements = systemElements;
+    public void setVinapuElements(List<VinapuElementBean> vinapuElements) {
+        this.vinapuElements = vinapuElements;
     }
 }

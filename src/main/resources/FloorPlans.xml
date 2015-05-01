@@ -27,9 +27,9 @@
                 <result column="dsc" property="buildingDsc" />
                 <result column="sd" property="systemDsc" />
                 <result column="floor_plan" property="floorPlan" />
-                <collection property="systemElements"
+                <collection property="vinapuElements"
                             column="sys_id"
-                            ofType="stearnswharf.systems.SystemBean"
+                            ofType="stearnswharf.systems.VinapuElementBean"
                             javaType="java.util.ArrayList">
                         <id column="e_id" property="oid"/>
                         <result column="e_dsc" property="dsc" />

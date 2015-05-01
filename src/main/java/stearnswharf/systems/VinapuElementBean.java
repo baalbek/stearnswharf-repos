@@ -4,7 +4,7 @@ package stearnswharf.systems;
  * Created by rcs on 01.05.15.
  *
  */
-public class SystemBean {
+public class VinapuElementBean {
     private int oid;
     private String dsc;
 
