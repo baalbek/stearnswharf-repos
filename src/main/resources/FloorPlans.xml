@@ -27,8 +27,20 @@
                 <result column="dsc" property="buildingDsc" />
                 <result column="sd" property="systemDsc" />
                 <result column="floor_plan" property="floorPlan" />
+                <collection property="systemElements"
+                            column="sys_id"
+                            ofType="stearnswharf.systems.SystemBean"
+                            javaType="java.util.ArrayList">
+                        <id column="e_id" property="oid"/>
+                        <result column="e_dsc" property="dsc" />
+                </collection>
+
         </resultMap>
         <select id="fetchFloorPlans" resultMap="floorPlanMap">
-                select sys_id,b_id,group_id,dsc,sd,floor_plan from construction.v_floor_plans where b_id=#{bid} order by floor_plan
+            select f.sys_id,f.b_id,f.group_id,f.dsc,f.sd,f.floor_plan,e.oid as e_id,e.dsc as e_dsc
+            from construction.v_floor_plans f
+            left outer join construction.v_vinapu_elements e on e.sys_id=f.sys_id
+            where f.b_id=2
+            order by f.floor_plan;
         </select>
 </mapper>

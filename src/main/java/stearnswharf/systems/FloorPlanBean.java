@@ -1,5 +1,7 @@
 package stearnswharf.systems;
 
+import java.util.List;
+
 public class FloorPlanBean {
     private int systemId;
     private int buildingId;
@@ -7,6 +9,7 @@ public class FloorPlanBean {
     private int floorPlan;
     private String buildingDsc;
     private String systemDsc;
+    private List<SystemBean> systemElements;
 
 
     public int getSystemId() {
@@ -55,5 +58,13 @@ public class FloorPlanBean {
 
     public void setSystemDsc(String systemDsc) {
         this.systemDsc = systemDsc;
+    }
+
+    public List<SystemBean> getSystemElements() {
+        return systemElements;
+    }
+
+    public void setSystemElements(List<SystemBean> systemElements) {
+        this.systemElements = systemElements;
     }
 }

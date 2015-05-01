@@ -23,4 +23,13 @@ public class BuildingBean {
     public void setDescription(String description) {
         this.description = description;
     }
+
+    public String toHtml() {
+        if (oid == -1) {
+            return "-";
+        }
+        else {
+            return String.format("%d - %s", oid, description);
+        }
+    }
 }
