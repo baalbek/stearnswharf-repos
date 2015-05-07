@@ -7,7 +7,9 @@ package stearnswharf.systems;
 public class VinapuElementBean {
     private int oid;
     private int n1;
+    private String n1dsc;
     private int n2;
+    private String n2dsc;
     private Integer wnode = null;
     private double plw;
     private double w1;
@@ -157,5 +159,21 @@ public class VinapuElementBean {
 
     public void setWnode(Integer wnode) {
         this.wnode = wnode;
+    }
+
+    public String getN1dsc() {
+        return n1dsc;
+    }
+
+    public void setN1dsc(String n1dsc) {
+        this.n1dsc = n1dsc;
+    }
+
+    public String getN2dsc() {
+        return n2dsc;
+    }
+
+    public void setN2dsc(String n2dsc) {
+        this.n2dsc = n2dsc;
     }
 }
