@@ -3,6 +3,7 @@ package stearnswharf.systems;
 import java.util.List;
 
 public class FloorPlanBean {
+    private int projectId;
     private int systemId;
     private int buildingId;
     private int groupId;
@@ -10,6 +11,14 @@ public class FloorPlanBean {
     private String buildingDsc;
     private String systemDsc;
     private List<VinapuElementBean> vinapuElements;
+
+    public int getProjectId() {
+        return projectId;
+    }
+
+    public void setProjectId(int projectId) {
+        this.projectId = projectId;
+    }
 
 
     public int getSystemId() {

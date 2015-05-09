@@ -3,62 +3,84 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="stearnswharf.mybatis.FloorPlansMapper">
 
-        <resultMap id="projectMap" type="stearnswharf.systems.ProjectBean">
-                <id column="oid" property="oid"/>
-                <result column="pn" property="projectName" />
-        </resultMap>
+    <resultMap id="projectMap" type="stearnswharf.systems.ProjectBean">
+            <id column="oid" property="oid"/>
+            <result column="pn" property="projectName" />
+    </resultMap>
 
-        <select id="fetchProjects" resultMap="projectMap">
-                select oid,pn from construction.projects order by oid
-        </select>
+    <select id="fetchProjects" resultMap="projectMap">
+            select oid,pn from construction.projects order by oid
+    </select>
 
-        <resultMap id="buildingMap" type="stearnswharf.systems.BuildingBean">
-                <id column="oid" property="oid"/>
-                <result column="dsc" property="description" />
-        </resultMap>
-        <select id="fetchBuildings" resultMap="buildingMap">
-                select oid,dsc from construction.buildings where project_id=#{pid} order by oid
-        </select>
+    <resultMap id="buildingMap" type="stearnswharf.systems.BuildingBean">
+            <id column="oid" property="oid"/>
+            <result column="dsc" property="description" />
+    </resultMap>
+    <select id="fetchBuildings" resultMap="buildingMap">
+            select oid,dsc from construction.buildings where project_id=#{pid} order by oid
+    </select>
 
-        <resultMap id="floorPlanMap" type="stearnswharf.systems.FloorPlanBean">
-                <id column="sys_id" property="systemId"/>
-                <id column="b_id" property="buildingId"/>
-                <id column="group_id" property="groupId"/>
-                <result column="dsc" property="buildingDsc" />
-                <result column="sd" property="systemDsc" />
-                <result column="floor_plan" property="floorPlan" />
-                <collection property="vinapuElements"
-                            column="sys_id"
-                            ofType="stearnswharf.systems.VinapuElementBean"
-                            javaType="java.util.ArrayList">
-                    <id column="l_id" property="loadId" />
-                    <id column="e_id" property="oid"/>
-                    <result column="e_dsc" property="dsc" />
-                    <result column="n1" property="n1" />
-                    <result column="n1dsc" property="n1dsc" />
-                    <result column="n2" property="n2" />
-                    <result column="n2dsc" property="n2dsc" />
-                    <result column="plw" property="plw" />
-                    <result column="w1" property="w1" />
-                    <result column="w2" property="w2" />
-                    <result column="wnode" property="wnode" />
-                    <result column="l_dsc" property="loadDsc" />
-                    <result column="lf" property="loadFactor" />
-                    <result column="form_factor" property="formFactor" />
-                    <result column="lcat" property="loadCategory" />
-                    <result column="q" property="loadQ" />
-                    <result column="service_limit" property="serviceLimit" />
-                    <result column="ultimate_limit" property="ultimateLimit" />
-                </collection>
+    <resultMap id="floorPlanMap" type="stearnswharf.systems.FloorPlanBean">
+            <id column="sys_id" property="systemId"/>
+            <id column="b_id" property="buildingId"/>
+            <id column="group_id" property="groupId"/>
+            <result column="p_id" property="projectId" />
+            <result column="dsc" property="buildingDsc" />
+            <result column="sd" property="systemDsc" />
+            <result column="floor_plan" property="floorPlan" />
+            <collection property="vinapuElements"
+                        column="sys_id"
+                        ofType="stearnswharf.systems.VinapuElementBean"
+                        javaType="java.util.ArrayList">
+                <id column="l_id" property="loadId" />
+                <id column="e_id" property="oid"/>
+                <result column="e_dsc" property="dsc" />
+                <result column="n1" property="n1" />
+                <result column="n1dsc" property="n1dsc" />
+                <result column="n2" property="n2" />
+                <result column="n2dsc" property="n2dsc" />
+                <result column="plw" property="plw" />
+                <result column="w1" property="w1" />
+                <result column="w2" property="w2" />
+                <result column="wnode" property="wnode" />
+                <result column="l_dsc" property="loadDsc" />
+                <result column="lf" property="loadFactor" />
+                <result column="form_factor" property="formFactor" />
+                <result column="lcat" property="loadCategory" />
+                <result column="q" property="loadQ" />
+                <result column="service_limit" property="serviceLimit" />
+                <result column="ultimate_limit" property="ultimateLimit" />
+            </collection>
 
-        </resultMap>
-        <select id="fetchFloorPlans" resultMap="floorPlanMap">
-            select f.sys_id,f.b_id,f.group_id,f.dsc,f.sd,f.floor_plan,
-            e.oid as e_id,e.dsc as e_dsc,e.n1,e.n1dsc,e.n2,e.n2dsc,e.plw,e.w1,e.w2,e.wnode,
-            e.l_id,e.l_dsc,e.lf,e.form_factor,e.lcat,e.q,e.service_limit,e.ultimate_limit
-            from construction.v_floor_plans f
-            left outer join construction.v_vinapu_elements e on e.sys_id=f.sys_id
-            where f.b_id=#{bid}
-            order by f.floor_plan,e.oid;
-        </select>
+    </resultMap>
+    <select id="fetchFloorPlans" resultMap="floorPlanMap">
+        select f.sys_id,f.b_id,f.group_id,f.p_id,f.dsc,f.sd,f.floor_plan,
+        e.oid as e_id,e.dsc as e_dsc,e.n1,e.n1dsc,e.n2,e.n2dsc,e.plw,e.w1,e.w2,e.wnode,
+        e.l_id,e.l_dsc,e.lf,e.form_factor,e.lcat,e.q,e.service_limit,e.ultimate_limit
+        from construction.v_floor_plans f
+        left outer join construction.v_vinapu_elements e on e.sys_id=f.sys_id
+        where f.b_id=#{bid}
+        order by f.floor_plan,e.oid
+    </select>
+    <select id="fetchFloorPlanSystems" resultMap="floorPlanMap">
+        select f.sys_id,f.b_id,f.group_id,f.p_id,f.dsc,f.sd,f.floor_plan,
+        e.oid as e_id,e.dsc as e_dsc,e.n1,e.n1dsc,e.n2,e.n2dsc,e.plw,e.w1,e.w2,e.wnode,
+        e.l_id,e.l_dsc,e.lf,e.form_factor,e.lcat,e.q,e.service_limit,e.ultimate_limit
+        from construction.v_floor_plans f
+        left outer join construction.v_vinapu_elements e on e.sys_id=f.sys_id
+        where f.b_id=#{bid} and f.floor_plan=#{fid}
+        order by f.floor_plan,e.oid
+    </select>
+    <insert id="newSystem"
+            parameterType="stearnswharf.systems.FloorPlanBean"
+            useGeneratedKeys="true"
+            keyProperty="systemId" >
+        insert into construction.systems (project_id,sd,group_id)
+        values (#{projectId}, #{systemDsc}, #{groupId})
+    </insert>
+    <insert id="addToFloorPlans"
+        parameterType="stearnswharf.systems.FloorPlanBean">
+        insert into construction.system_floor_plans (building_id,sys_id,floor_plan)
+        values (#{buildingId}, #{systemId}, #{floorPlan})
+    </insert>
 </mapper>
