@@ -72,15 +72,15 @@
         order by f.floor_plan,e.oid
     </select>
     <insert id="newSystem"
-            parameterType="stearnswharf.systems.FloorPlanBean"
+            parameterType="stearnswharf.systems.SystemBean"
             useGeneratedKeys="true"
-            keyProperty="systemId" >
+            keyProperty="oid" >
         insert into construction.systems (project_id,sd,group_id)
-        values (#{projectId}, #{systemDsc}, #{groupId})
+        values (#{projectId}, #{sd}, #{groupId})
     </insert>
     <insert id="addToFloorPlans"
-        parameterType="stearnswharf.systems.FloorPlanBean">
+        parameterType="stearnswharf.systems.SystemBean">
         insert into construction.system_floor_plans (building_id,sys_id,floor_plan)
-        values (#{buildingId}, #{systemId}, #{floorPlan})
+        values (#{buildingId}, #{oid}, #{floorPlan})
     </insert>
 </mapper>

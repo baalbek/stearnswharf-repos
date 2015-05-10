@@ -4,6 +4,7 @@ import org.apache.ibatis.annotations.Param;
 import stearnswharf.systems.BuildingBean;
 import stearnswharf.systems.FloorPlanBean;
 import stearnswharf.systems.ProjectBean;
+import stearnswharf.systems.SystemBean;
 
 import java.util.List;
 
@@ -13,6 +14,6 @@ public interface FloorPlansMapper {
     List<FloorPlanBean> fetchFloorPlans(@Param("bid") int buildingId);
     List<FloorPlanBean> fetchFloorPlanSystems(@Param("bid") int buildingId,
                                               @Param("fid") int floorPlanId);
-    void newSystem(FloorPlanBean floorPlan);
-    void addToFloorPlans(FloorPlanBean floorPlan);
+    void newSystem(SystemBean sys);
+    void addToFloorPlans(SystemBean sys);
 }
