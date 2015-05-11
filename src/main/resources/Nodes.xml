@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="stearnswharf.mybatis.NodesMapper">
+    <resultMap id="nodeMap" type="stearnswharf.nodes.NodeBean">
+        <id column="oid" property="oid"/>
+        <result column="project_id" property="projectId" />
+        <result column="coord_sys" property="coordSys" />
+        <result column="dsc" property="dsc" />
+    </resultMap>
+
+    <select id="fetchAllNodes" resultMap="nodeMap">
+        select oid,project_id,coord_sys,dsc from construction.nodes 
+        where project_id=#{pid} order by dsc
+    </select>
+
+    <select id="fetchNodes" resultMap="nodeMap">
+        select oid,project_id,coord_sys,dsc from construction.nodes
+        where project_id=#{pid} and coord_sys=#{cosyid} order by dsc
+    </select>
+
+    <select id="fetchCoordSys" resultType="java.lang.Integer">
+        select distinct(coord_sys) from construction.nodes where project_id=#{pid} 
+    </select>
+</mapper>

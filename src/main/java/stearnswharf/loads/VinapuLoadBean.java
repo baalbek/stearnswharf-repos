@@ -53,6 +53,6 @@ public class VinapuLoadBean {
 
     public String toHtml() {
         String lcatStr = loadCategory == 1 ? "Egenlast" : "Nyttelast";
-        return String.format("[ %d ] [ %s ] - %s", oid, lcatStr, dsc);
+        return String.format("[ %d ] [ %s ] - %s - %.2f", oid, lcatStr, dsc, q);
     }
 }
