@@ -6,6 +6,7 @@ package stearnswharf.systems;
  */
 public class VinapuElementBean {
     private int oid;
+    private int systemId;
     private int n1;
     private String n1dsc;
     private int n2;
@@ -175,5 +176,13 @@ public class VinapuElementBean {
 
     public void setN2dsc(String n2dsc) {
         this.n2dsc = n2dsc;
+    }
+
+    public int getSystemId() {
+        return systemId;
+    }
+
+    public void setSystemId(int systemId) {
+        this.systemId = systemId;
     }
 }

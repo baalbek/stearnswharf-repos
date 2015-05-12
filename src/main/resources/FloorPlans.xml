@@ -83,4 +83,13 @@
         insert into construction.system_floor_plans (building_id,sys_id,floor_plan)
         values (#{buildingId}, #{oid}, #{floorPlan})
     </insert>
+
+    <!-- oid | sys_id |    dsc     | n1 | n2 | plw | w1  | w2 | angle | element_type | wnode -->
+    <insert id="newVinapuElement"
+            parameterType="stearnswharf.systems.VinapuElementBean"
+            useGeneratedKeys="true"
+            keyProperty="oid" >
+        insert into construction.vinapu_elements (sys_id,dsc,n1,n2,plw,w1)
+        values (#{systemId},#{dsc},#{n1},#{n2},#{plw},#{w1})
+    </insert>
 </mapper>

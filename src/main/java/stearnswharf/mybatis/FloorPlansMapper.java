@@ -1,10 +1,7 @@
 package stearnswharf.mybatis;
 
 import org.apache.ibatis.annotations.Param;
-import stearnswharf.systems.BuildingBean;
-import stearnswharf.systems.FloorPlanBean;
-import stearnswharf.systems.ProjectBean;
-import stearnswharf.systems.SystemBean;
+import stearnswharf.systems.*;
 
 import java.util.List;
 
@@ -16,4 +13,5 @@ public interface FloorPlansMapper {
                                               @Param("fid") int floorPlanId);
     void newSystem(SystemBean sys);
     void addToFloorPlans(SystemBean sys);
+    void newVinapuElement(VinapuElementBean v);
 }
