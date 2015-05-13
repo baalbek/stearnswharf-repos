@@ -92,4 +92,9 @@
         insert into construction.vinapu_elements (sys_id,dsc,n1,n2,plw,w1)
         values (#{systemId},#{dsc},#{n1},#{n2},#{plw},#{w1})
     </insert>
+    <insert id="newVinapuElementLoad"
+        parameterType="stearnswharf.systems.VinapuElementLoadBean">
+        insert into construction.vinapu_element_loads (el_id,ld_id,form_factor)
+        values (#{elementId},#{loadId},#{formFactor})
+    </insert>
 </mapper>

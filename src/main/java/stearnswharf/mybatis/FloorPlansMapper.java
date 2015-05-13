@@ -14,4 +14,5 @@ public interface FloorPlansMapper {
     void newSystem(SystemBean sys);
     void addToFloorPlans(SystemBean sys);
     void newVinapuElement(VinapuElementBean v);
+    void newVinapuElementLoad(VinapuElementLoadBean load);
 }
