@@ -6,20 +6,50 @@
         <id column="oid" property="oid"/>
         <result column="project_id" property="projectId" />
         <result column="coord_sys" property="coordSys" />
+        <result column="x" property="x" />
+        <result column="y" property="y" />
+        <result column="z" property="z" />
+        <result column="dofx" property="dofX" />
+        <result column="dofZ" property="dofZ" />
+        <result column="dofM" property="dofM" />
         <result column="dsc" property="dsc" />
     </resultMap>
 
     <select id="fetchAllNodes" resultMap="nodeMap">
-        select oid,project_id,coord_sys,dsc from construction.nodes 
+        select oid,project_id,coord_sys,x,y,z,dofx,dofz,dofm,dsc from construction.nodes
         where project_id=#{pid} order by dsc
     </select>
 
     <select id="fetchNodes" resultMap="nodeMap">
-        select oid,project_id,coord_sys,dsc from construction.nodes
+        select oid,project_id,coord_sys,x,y,z,dofx,dofz,dofm,dsc from construction.nodes
         where project_id=#{pid} and coord_sys=#{cosyid} order by dsc
     </select>
 
-    <select id="fetchCoordSys" resultType="java.lang.Integer">
+    <select id="coordSys" resultType="java.lang.Integer">
         select distinct(coord_sys) from construction.nodes where project_id=#{pid} 
     </select>
+
+    <select id="systemCoordSys" resultType="java.lang.Integer">
+        select distinct(n.coord_sys) from construction.nodes n
+        join construction.vinapu_elements e on n.oid=e.n1 where e.sys_id=#{sysid}
+    </select>
+
+    <select id="systemNodes" resultMap="nodeMap">
+        select n.oid,n.project_id,n.coord_sys,n.x,n.y,n.z,n.dofx,n.dofz,n.dofm,n.dsc
+        from construction.nodes n join construction.systems s
+        on s.project_id = n.project_id where s.oid=#{sysid} and n.coord_sys=#{cosyid}
+    </select>
+    <!--
+    <select id="systemNodes" resultMap="nodeMap">
+        select n.* from nodes n where exists
+        (select 1 from vinapu_elements e join systems s on s.oid=e.sys_id where s.oid=#{sysId} and n.oid=e.n1)
+        union
+        select n.* from nodes n where exists
+        (select 1 from vinapu_elements e join systems s on s.oid=e.sys_id where s.oid=#{sysId} and n.oid=e.n2)
+        order by 8
+    </select>
+    -->
+
+
 </mapper>
+

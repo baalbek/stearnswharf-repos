@@ -9,6 +9,11 @@ public interface NodesMapper {
 
     List<NodeBean> fetchNodes(@Param("pid") int projectId,
                               @Param("cosyid") int coordSysId);
-    List<Integer> fetchCoordSys(@Param("pid") int projectId);
+    List<Integer> coordSys(@Param("pid") int projectId);
+
+    Integer systemCoordSys(@Param("sysid") int systemId);
+
+    List<NodeBean> systemNodes( @Param("sysid") int systemId,
+                                @Param("cosyid") int coordSystId);
 
 }

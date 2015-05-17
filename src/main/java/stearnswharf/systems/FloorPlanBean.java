@@ -12,6 +12,9 @@ public class FloorPlanBean {
     private String systemDsc;
     private List<VinapuElementBean> vinapuElements;
 
+    public int getOid() {
+        return systemId;
+    }
     public int getProjectId() {
         return projectId;
     }
@@ -73,7 +76,9 @@ public class FloorPlanBean {
         return vinapuElements;
     }
 
-    public void setVinapuElements(List<VinapuElementBean> vinapuElements) {
-        this.vinapuElements = vinapuElements;
+    public void setVinapuElements(List<VinapuElementBean> vinapuElements) { this.vinapuElements = vinapuElements; }
+
+    public String toHtml() {
+        return String.format("[ %d ] %s",systemId, systemDsc);
     }
 }
