@@ -22,5 +22,8 @@ public class SteelBeam {
         name = value;
     }
 
+    public String toHtml() {
+        return String.format("[ %d ] %s",oid,name);
+    }
 }
 
