@@ -38,6 +38,7 @@
         select n.oid,n.project_id,n.coord_sys,n.x,n.y,n.z,n.dofx,n.dofz,n.dofm,n.dsc
         from construction.nodes n join construction.systems s
         on s.project_id = n.project_id where s.oid=#{sysid} and n.coord_sys=#{cosyid}
+        order by n.dsc
     </select>
     <!--
     <select id="systemNodes" resultMap="nodeMap">
