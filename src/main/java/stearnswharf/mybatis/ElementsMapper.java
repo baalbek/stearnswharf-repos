@@ -2,6 +2,8 @@ package stearnswharf.mybatis;
 
 import org.apache.ibatis.annotations.Param;
 import java.util.List;
+
+import stearnswharf.elements.DistLoad;
 import stearnswharf.elements.SteelBeam;
 
 public interface ElementsMapper {
@@ -14,4 +16,5 @@ public interface ElementsMapper {
     */
 
     List<SteelBeam> fetchSteelBeams();
+    void newDistLoad(DistLoad load);
 }
