@@ -16,6 +16,17 @@
 
     <!-- DistLoad -->
     <!-- oid | sys_id | qx1 | qx2 | qy1 | qy2 | qz1 | qz2 | lf -->
+    <resultMap id="distLoadMap" type="stearnswharf.elements.DistLoad">
+        <id column="oid" property="oid"/>
+        <result column="sys_id" property="sysId" />
+        <result column="qx1" property="qx1" />
+        <result column="qx2" property="qx2" />
+        <result column="qy1" property="qy1" />
+        <result column="qy2" property="qy2" />
+        <result column="qz1" property="qz1" />
+        <result column="qz2" property="qz2" />
+        <result column="lf" property="loadFactor" />
+    </resultMap>
     <insert id="newDistLoad"
             parameterType="stearnswharf.elements.DistLoad"
             useGeneratedKeys="true"
@@ -23,4 +34,8 @@
         insert into construction.dist_loads (sys_id,qx1,qx2,qy1,qy2,qz1,qz2,lf)
         values (#{sysId},#{qx1},#{qx2},#{qy1},#{qy2},#{qz1},#{qz2},#{loadFactor})
     </insert>
+    <select id="fetchDistLoads" resultMap="distLoadMap">
+        select oid,sys_id,qx1,qx2,qy1,qy2,qz1,qz2,lf from construction.dist_loads
+        where sys_id=#{sysid} order by oid
+    </select>
 </mapper>

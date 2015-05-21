@@ -88,9 +88,8 @@ public class DistLoad {
     }
 
     public String toHtml() {
-        return String.format("[ %d ] x1: %.1f, x2: %.1f, y1: %.1f, y2: %.1f, z1: %.1f, z2: %.1f, lf: %.2f",
+        return String.format("[ %d ] x: %.1f/%.1f, y: %.1f/%.1f, z: %.1f/%.1f, lf: %.2f",
                 oid,
-                qx1,
                 qx1,
                 qx2,
                 qy1,
