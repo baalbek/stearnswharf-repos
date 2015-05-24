@@ -38,4 +38,44 @@
         select oid,sys_id,qx1,qx2,qy1,qy2,qz1,qz2,lf from construction.dist_loads
         where sys_id=#{sysid} order by oid
     </select>
+
+
+    <!-- Steel Element -->
+
+    <resultMap id="steelElementMap" type="stearnswharf.elements.SteelElement">
+        <id column="oid" property="oid"/>
+        <result column="sys_id" property="sysId" />
+        <result column="n1" property="n1" />
+        <result column="n2" property="n2" />
+        <result column="profile_id" property="profileId" />
+        <result column="status" property="status" />
+    </resultMap>
+    <insert id="newSteelElement"
+            parameterType="stearnswharf.elements.SteelElement"
+            useGeneratedKeys="true"
+            keyProperty="oid" >
+        insert into construction.steel_elements (sys_id,n1,n2,profile_id,status)
+        values (#{sysId},#{n1},#{n2},#{profileId},#{status})
+    </insert>
+
+    <!-- Steel Element Load -->
+    <insert id="newSteelElementLoad"
+            parameterType="stearnswharf.elements.SteelElementLoad"
+            useGeneratedKeys="true"
+            keyProperty="oid" >
+        insert into construction.steel_element_loads (ld_case,el_id,ld_id)
+        values (#{loadCase},#{elementId},#{loadId})
+    </insert>
+
+    <!-- Node Load -->
+    <!-- oid | sys_id | n1 | p | lf | ang -->
+    <insert id="newNodeLoad"
+            parameterType="stearnswharf.elements.NodeLoad"
+            useGeneratedKeys="true"
+            keyProperty="oid" >
+        insert into construction.point_loads (sys_id,n1,p,lf,ang)
+        values (#{sysId},#{n1},#{p},#{loadFactor},#{angle})
+    </insert>
+
+
 </mapper>

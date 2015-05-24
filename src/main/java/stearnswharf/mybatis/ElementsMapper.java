@@ -3,8 +3,7 @@ package stearnswharf.mybatis;
 import org.apache.ibatis.annotations.Param;
 import java.util.List;
 
-import stearnswharf.elements.DistLoad;
-import stearnswharf.elements.SteelBeam;
+import stearnswharf.elements.*;
 
 public interface ElementsMapper {
     /*
@@ -18,4 +17,7 @@ public interface ElementsMapper {
     List<SteelBeam> fetchSteelBeams();
     void newDistLoad(DistLoad load);
     List<DistLoad> fetchDistLoads(@Param("sysid") int sysId);
+    void newSteelElement(SteelElement element);
+    void newSteelElementLoad(SteelElementLoad load);
+    void newNodeLoad(NodeLoad load);
 }
