@@ -5,8 +5,11 @@ public class SteelElement {
     private int oid;
     private int sysId;
     private int n1;
+    private String n1Dsc;
     private int n2;
+    private String n2Dsc;
     private int profileId;
+    private String profileName;
     private int loadId;
     private int status;
 
@@ -75,5 +78,29 @@ public class SteelElement {
     }
     public String toHtml() {
         return String.format("[ %d ] sys id: %d, profile id: %d", oid, sysId, profileId);
+    }
+
+    public String getN1Dsc() {
+        return n1Dsc;
+    }
+
+    public void setN1Dsc(String n1Dsc) {
+        this.n1Dsc = n1Dsc;
+    }
+
+    public String getN2Dsc() {
+        return n2Dsc;
+    }
+
+    public void setN2Dsc(String n2Dsc) {
+        this.n2Dsc = n2Dsc;
+    }
+
+    public String getProfileName() {
+        return profileName;
+    }
+
+    public void setProfileName(String profileName) {
+        this.profileName = profileName;
     }
 }

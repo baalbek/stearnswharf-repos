@@ -15,6 +15,7 @@ public interface ElementsMapper {
     */
 
     List<SteelBeam> fetchSteelBeams();
+    List<SteelElement> fetchSteelElements(@Param("sysid") int sysId);
     void newDistLoad(DistLoad load);
     List<DistLoad> fetchDistLoads(@Param("sysid") int sysId);
     void newSteelElement(SteelElement element);

@@ -46,8 +46,11 @@
         <id column="oid" property="oid"/>
         <result column="sys_id" property="sysId" />
         <result column="n1" property="n1" />
+        <result column="n1dsc" property="n1Dsc" />
         <result column="n2" property="n2" />
+        <result column="n2dsc" property="n2Dsc" />
         <result column="profile_id" property="profileId" />
+        <result column="profile_name" property="profileName" />
         <result column="status" property="status" />
     </resultMap>
     <insert id="newSteelElement"
@@ -58,6 +61,13 @@
         values (#{sysId},#{n1},#{n2},#{profileId},#{status})
     </insert>
 
+    <select id="fetchSteelElements" resultMap="steelElementMap">
+        select e.oid,e.sys_id,e.n1,nx1.dsc as n1dsc,e.n2,nx2.dsc as n2dsc,e.profile_id,b.name as profile_name,e.status
+        from construction.steel_elements e join construction.steel_beams b on e.profile_id=b.oid
+        join construction.nodes nx1 on nx1.oid=e.n1
+        join construction.nodes nx2 on nx2.oid=e.n2
+        where e.sys_id=#{sysid}
+    </select>
     <!-- Steel Element Load -->
     <insert id="newSteelElementLoad"
             parameterType="stearnswharf.elements.SteelElementLoad"
