@@ -11,10 +11,11 @@ public class SteelElement {
     private int profileId;
     private String profileName;
     private int loadId;
+    private int loadCase;
     private int status;
 
-    public SteelElementLoad createElementLoad() {
-        return new  SteelElementLoad(oid,loadId);
+    public ElementLoad createElementLoad() {
+        return new ElementLoad(oid,loadId);
     }
 
     public boolean hasElementLoad() {
@@ -102,5 +103,13 @@ public class SteelElement {
 
     public void setProfileName(String profileName) {
         this.profileName = profileName;
+    }
+
+    public int getLoadCase() {
+        return loadCase;
+    }
+
+    public void setLoadCase(int loadCase) {
+        this.loadCase = loadCase;
     }
 }

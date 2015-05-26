@@ -104,12 +104,19 @@
     </select>
     -->
 
-    <!-- Steel Element Load -->
+    <!-- Element Loads -->
     <insert id="newSteelElementLoad"
-            parameterType="stearnswharf.elements.SteelElementLoad"
+            parameterType="stearnswharf.elements.ElementLoad"
             useGeneratedKeys="true"
             keyProperty="oid" >
         insert into construction.steel_element_loads (ld_case,el_id,ld_id)
+        values (#{loadCase},#{elementId},#{loadId})
+    </insert>
+    <insert id="newWoodElementLoad"
+            parameterType="stearnswharf.elements.ElementLoad"
+            useGeneratedKeys="true"
+            keyProperty="oid" >
+        insert into construction.wood_element_loads (ld_case,el_id,ld_id)
         values (#{loadCase},#{elementId},#{loadId})
     </insert>
 
@@ -124,4 +131,32 @@
     </insert>
 
 
+    <!-- Wood Element -->
+    <!-- oid | sys_id | n1  | n2  | st_class_id | w  |  h  | status -->
+    <insert id="newWoodElement"
+            parameterType="stearnswharf.elements.WoodElement"
+            useGeneratedKeys="true"
+            keyProperty="oid" >
+        insert into construction.wood_elements (sys_id,n1,n2,st_class_id,w,h,status)
+        values (#{sysId},#{n1},#{n2},#{stClass},#{w},#{h},#{status})
+    </insert>
+
+    <!-- Wood Strength Class -->
+    <!-- oid | class_name | fmk  | fvk | e0mean | ft0k | ft90k | fc0k | fc90k -->
+    <resultMap id="woodStClassMap" type="stearnswharf.elements.WoodStClass">
+        <id column="oid" property="oid"/>
+        <result column="class_name" property="stClassName" />
+        <result column="fmk" property="fmk" />
+        <result column="fvk" property="fvk" />
+        <result column="e0mean" property="e0mean" />
+        <result column="ft0k" property="ft0k" />
+        <result column="ft90k" property="ft90k" />
+        <result column="fc0k" property="fc0k" />
+        <result column="fc90k" property="fc90k" />
+    </resultMap>
+
+    <select id="fetchWoodStClass" resultMap="woodStClassMap">
+        select oid,class_name,fmk,fvk,e0mean,ft0k,ft90k,fc0k,fc90k
+        from construction.wood_st_class order by class_name
+    </select>
 </mapper>

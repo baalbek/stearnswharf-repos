@@ -4,16 +4,16 @@ package stearnswharf.elements;
  * Created by rcs on 21.05.15.
  *
  */
-public class SteelElementLoad {
+public class ElementLoad {
     private int loadCase;
     private int elementId;
     private int loadId;
 
-    public SteelElementLoad() {
+    public ElementLoad() {
     }
 
-    public SteelElementLoad(int elementId, 
-                            int loadId) {
+    public ElementLoad(int elementId,
+                       int loadId) {
         this.loadCase = 1;
         this.elementId = elementId;
         this.loadId = loadId;
