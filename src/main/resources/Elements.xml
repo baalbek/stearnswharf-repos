@@ -67,42 +67,6 @@
         select oid,sys_id,n1,n1dsc,n2,n2dsc,profile_id,profile_name,status,ld_case,ld_id
         from construction.v_steel_elements where sys_id=#{sysid}
     </select>
-    <!--
-    oid     | integer     |
-    sys_id  | integer     |
-    p_oid   | integer     |
-    name    | beam_name   |
-    n1      | integer     |
-    x1      | coord       |
-    y1      | coord       |
-    z1      | coord       |
-    dofx1   | dof         |
-    dofy1   | dof         |
-    dofm1   | dof         |
-    n2      | integer     |
-    x2      | coord       |
-    y2      | coord       |
-    z2      | coord       |
-    dofx2   | dof         |
-    dofy2   | dof         |
-    dofm2   | dof         |
-    ld_case | load_case   |
-    ld_id   | integer     |
-    qx1     | kn          |
-    qx2     | kn          |
-    qy1     | kn          |
-    qy2     | kn          |
-    qz1     | kn          |
-    qz2     | kn          |
-    lf      | load_factor |
-    <select id="fetchSteelElements" resultMap="steelElementMap">
-        select e.oid,e.sys_id,e.n1,nx1.dsc as n1dsc,e.n2,nx2.dsc as n2dsc,e.profile_id,b.name as profile_name,e.status
-        from construction.steel_elements e join construction.steel_beams b on e.profile_id=b.oid
-        join construction.nodes nx1 on nx1.oid=e.n1
-        join construction.nodes nx2 on nx2.oid=e.n2
-        where e.sys_id=#{sysid}
-    </select>
-    -->
 
     <!-- Element Loads -->
     <insert id="newSteelElementLoad"
