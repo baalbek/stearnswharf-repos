@@ -1,6 +1,6 @@
 package stearnswharf.mybatis;
 
-import stearnswharf.loads.VinapuLoadBean;
+import stearnswharf.materials.LoadBean;
 
 import java.util.List;
 
@@ -9,6 +9,6 @@ import java.util.List;
  *
  */
 public interface LoadsMapper {
-    List<VinapuLoadBean> fetchVinapuDeadLoads();
-    List<VinapuLoadBean> fetchVinapuLiveLoads();
+    List<LoadBean> fetchVinapuDeadLoads();
+    List<LoadBean> fetchVinapuLiveLoads();
 }

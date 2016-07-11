@@ -1,10 +1,10 @@
-package stearnswharf.loads;
+package stearnswharf.materials;
 
 /**
  * Created by rcs on 10.05.15.
  *
  */
-public class VinapuLoadBean {
+public class LoadBean {
     private int oid;
     private String dsc;
     private double loadFactor;

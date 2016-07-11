@@ -4,6 +4,7 @@ import org.apache.ibatis.annotations.Param;
 import java.util.List;
 
 import stearnswharf.elements.*;
+import stearnswharf.materials.SteelBeam;
 
 public interface ElementsMapper {
     /*

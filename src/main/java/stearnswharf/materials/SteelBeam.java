@@ -1,4 +1,4 @@
-package stearnswharf.elements;
+package stearnswharf.materials;
 
 public class SteelBeam {
     private int oid;

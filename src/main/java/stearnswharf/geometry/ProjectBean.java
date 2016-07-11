@@ -1,4 +1,6 @@
-package stearnswharf.systems;
+package stearnswharf.geometry;
+
+import java.sql.Date;
 
 /**
  * Created by rcs on 25.04.15.
@@ -7,6 +9,7 @@ package stearnswharf.systems;
 public class ProjectBean {
     private int oid;
     private String projectName;
+    private Date createdDate;
     private Boolean selected;
 
     public ProjectBean() {
@@ -41,6 +44,14 @@ public class ProjectBean {
 
     public void setSelected(Boolean selected) {
         this.selected = selected;
+    }
+
+    public Date getCreatedDate() {
+        return createdDate;
+    }
+
+    public void setCreatedDate(Date createdDate) {
+        this.createdDate = createdDate;
     }
 
     public String toHtml() {

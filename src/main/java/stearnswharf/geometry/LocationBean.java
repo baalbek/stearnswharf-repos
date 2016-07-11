@@ -1,10 +1,10 @@
-package stearnswharf.systems;
+package stearnswharf.geometry;
 
 /**
  * Created by rcs on 25.04.15.
  *
  */
-public class BuildingBean {
+public class LocationBean {
     private int oid;
     private String description;
 

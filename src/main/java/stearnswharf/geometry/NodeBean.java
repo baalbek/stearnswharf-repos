@@ -1,4 +1,4 @@
-package stearnswharf.nodes;
+package stearnswharf.geometry;
 
 
 public class NodeBean {

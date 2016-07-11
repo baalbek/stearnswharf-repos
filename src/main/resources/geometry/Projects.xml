@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="stearnswharf.mybatis.geometry.ProjectsMapper">
+    <resultMap id="projectMap" type="stearnswharf.geometry.ProjectBean">
+        <id column="oid" property="oid"/>
+        <result column="pn" property="projectName" />
+        <result column="created_date" property="createdDate" />
+    </resultMap>
+
+    <select id="fetchProjects" resultMap="projectMap">
+        select oid,pn,created_date from geometry.projects order by pn
+    </select>
+</mapper>

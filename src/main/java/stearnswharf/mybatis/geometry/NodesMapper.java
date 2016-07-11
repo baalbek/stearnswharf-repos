@@ -1,8 +1,8 @@
-package stearnswharf.mybatis;
+package stearnswharf.mybatis.geometry;
 
 import org.apache.ibatis.annotations.Param;
 import java.util.List;
-import stearnswharf.nodes.NodeBean;
+import stearnswharf.geometry.NodeBean;
 
 public interface NodesMapper {
     List<NodeBean> fetchAllNodes(@Param("pid") int projectId);
