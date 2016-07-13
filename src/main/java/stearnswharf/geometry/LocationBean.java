@@ -6,7 +6,7 @@ package stearnswharf.geometry;
  */
 public class LocationBean {
     private int oid;
-    private String description;
+    private String locationName;
 
     public int getOid() {
         return oid;
@@ -16,12 +16,12 @@ public class LocationBean {
         this.oid = oid;
     }
 
-    public String getDescription() {
-        return description;
+    public String getLocationName() {
+        return locationName;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
+    public void setLocationName(String locationName) {
+        this.locationName = locationName;
     }
 
     public String toHtml() {
@@ -29,7 +29,7 @@ public class LocationBean {
             return "-";
         }
         else {
-            return String.format("%d - %s", oid, description);
+            return String.format("%d - %s", oid, locationName);
         }
     }
 }

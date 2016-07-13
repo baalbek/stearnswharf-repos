@@ -10,6 +10,7 @@ repositories {
           
 
 dependencies {
+    compile "org.clojure:clojure:$clojureVersion"
     compile "log4j:log4j:$log4jVersion"
     compile "org.mybatis:mybatis:$mybatisVersion"
     runtime "org.postgresql:postgresql:$postgresVersion"

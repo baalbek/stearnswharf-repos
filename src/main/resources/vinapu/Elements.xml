@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="stearnswharf.mybatis.vinapu.ElementsMapper">
+
+    <resultMap id="elementLoadMap" type="stearnswharf.vinapu.elements.ElementLoadBean">
+        <id column="oid" property="oid"/>
+        <result column="sys_id" property="systemId" />
+        <result column="e_dsc" property="dsc" />
+        <result column="n1" property="n1" />
+        <result column="n1_dsc" property="n1dsc" />
+        <result column="n2" property="n2" />
+        <result column="n2_dsc" property="n2dsc" />
+        <result column="plw" property="plw" />
+        <result column="w1" property="w1" />
+        <result column="w2" property="w2" />
+        <result column="angle" property="angle" />
+        <result column="element_type" property="elementType" />
+        <result column="ld_id" property="loadId" />
+        <result column="load_factor" property="loadFactor" />
+        <result column="form_factor" property="formFactor" />
+        <result column="m_dsc" property="loadDsc" />
+        <result column="lcat" property="loadCategory" />
+        <result column="q" property="loadQ" />
+        <result column="service_limit" property="serviceLimit" />
+        <result column="ultimate_limit" property="ultimateLimit" />
+    </resultMap>
+
+    <select id="fetchElementLoads" resultMap="elementLoadMap">
+        select * from vinapu.v_element_loads where sys_id=#{sysId} order by n1
+    </select>
+</mapper>

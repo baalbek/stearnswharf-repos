@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="stearnswharf.mybatis.geometry.SystemsMapper">
+
+    <resultMap id="systemMap" type="stearnswharf.geometry.SystemBean">
+        <id column="oid" property="oid"/>
+        <result column="loc_id" property="locationId" />
+        <result column="sys_name" property="systemName" />
+        <result column="created_date" property="createdDate" />
+    </resultMap>
+
+    <select id="fetchSystems" resultMap="systemMap">
+        select oid,sys_name,created_date from geometry.systems where loc_id=#{locId}
+        order by sys_name
+    </select>
+
+</mapper>

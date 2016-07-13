@@ -1,16 +1,17 @@
 package stearnswharf.geometry;
 
+import java.sql.Date;
+import java.time.LocalDate;
+
 /**
  * Created by rcs on 09.05.15.
  *
  */
 public class SystemBean {
     private int oid;
-    private int projectId;
-    private int buildingId;
-    private int floorPlan;
-    private String sd;
-    private int groupId;
+    private int locationId;
+    private String systemName;
+    private Date createdDate;
 
     public int getOid() {
         return oid;
@@ -20,43 +21,37 @@ public class SystemBean {
         this.oid = oid;
     }
 
-    public int getProjectId() {
-        return projectId;
+    public int getLocationId() {
+        return locationId;
     }
 
-    public void setProjectId(int projectId) {
-        this.projectId = projectId;
+    public void setLocationId(int locationId) {
+        this.locationId = locationId;
     }
 
-    public int getBuildingId() {
-        return buildingId;
+    public String getSystemName() {
+        return systemName;
     }
 
-    public void setBuildingId(int buildingId) {
-        this.buildingId = buildingId;
+    public void setSystemName(String systemName) {
+        this.systemName = systemName;
     }
 
-    public int getFloorPlan() {
-        return floorPlan;
+    public Date getCreatedDate() {
+        return createdDate;
     }
 
-    public void setFloorPlan(int floorPlan) {
-        this.floorPlan = floorPlan;
+    public void setCreatedDate(Date createdDate) {
+        this.createdDate = createdDate;
     }
 
-    public String getSd() {
-        return sd;
-    }
-
-    public void setSd(String sd) {
-        this.sd = sd;
-    }
-
-    public int getGroupId() {
-        return groupId;
-    }
-
-    public void setGroupId(int groupId) {
-        this.groupId = groupId;
+    public String toHtml() {
+        if (oid == -1) {
+            return "-";
+        }
+        else {
+            LocalDate lb = createdDate.toLocalDate();
+            return String.format("[%d] %s, %d-%d-%d", oid, systemName, lb.getYear(), lb.getMonthValue(), lb.getDayOfMonth());
+        }
     }
 }

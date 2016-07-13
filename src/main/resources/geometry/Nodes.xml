@@ -4,7 +4,7 @@
 <mapper namespace="stearnswharf.mybatis.geometry.NodesMapper">
     <resultMap id="nodeMap" type="stearnswharf.geometry.NodeBean">
         <id column="oid" property="oid"/>
-        <result column="project_id" property="projectId" />
+        <result column="project_id" property="locationId" />
         <result column="coord_sys" property="coordSys" />
         <result column="x" property="x" />
         <result column="y" property="y" />

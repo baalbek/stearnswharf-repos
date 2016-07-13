@@ -1,18 +1,17 @@
-package vinapu.elements;
+package stearnswharf.vinapu.elements;
 
 /**
  * Created by rcs on 01.05.15.
  *
  */
-public class VinapuElementBean {
+public class ElementLoadBean {
     private int oid;
     private int systemId;
     private int n1;
     private String n1dsc;
     private int n2;
     private String n2dsc;
-    private Integer wnode = null;
-    private double plw;
+    private double plw; // Load Distribution Factor
     private double w1;
     private Double w2;
     private double angle;
@@ -25,6 +24,7 @@ public class VinapuElementBean {
     private double serviceLimit;
     private double ultimateLimit;
     private String dsc;
+    private int elementType;
 
     public int getOid() {
         return oid;
@@ -154,14 +154,6 @@ public class VinapuElementBean {
         this.ultimateLimit = ultimateLimit;
     }
 
-    public Integer getWnode() {
-        return wnode;
-    }
-
-    public void setWnode(Integer wnode) {
-        this.wnode = wnode;
-    }
-
     public String getN1dsc() {
         return n1dsc;
     }
@@ -184,5 +176,13 @@ public class VinapuElementBean {
 
     public void setSystemId(int systemId) {
         this.systemId = systemId;
+    }
+
+    public int getElementType() {
+        return elementType;
+    }
+
+    public void setElementType(int elementType) {
+        this.elementType = elementType;
     }
 }

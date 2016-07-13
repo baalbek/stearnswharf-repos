@@ -1,6 +1,11 @@
 package stearnswharf.geometry;
 
+import clojure.lang.*;
+
 import java.sql.Date;
+import java.time.LocalDate;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Created by rcs on 25.04.15.
@@ -46,6 +51,7 @@ public class ProjectBean {
         this.selected = selected;
     }
 
+
     public Date getCreatedDate() {
         return createdDate;
     }
@@ -53,7 +59,11 @@ public class ProjectBean {
     public void setCreatedDate(Date createdDate) {
         this.createdDate = createdDate;
     }
+    public LocalDate getCreatedLocalDate() {
+        return createdDate.toLocalDate();
+    }
 
+    /*
     public String toHtml() {
         if (oid == -1) {
             return "-";
@@ -62,4 +72,24 @@ public class ProjectBean {
             return String.format("%d - %s", oid, projectName);
         }
     }
+    //*/
+
+    public IPersistentMap asClojureMap()  {
+        Map<Keyword,String> myMap = new HashMap<>();
+        myMap.put(Keyword.intern("content"), this.toString());
+        myMap.put(Keyword.intern("value"), String.format("%d",oid));
+        return PersistentArrayMap.create(myMap);
+    }
+
+    @Override
+    public String toString(){
+        if (oid == -1) {
+            return "-";
+        }
+        else {
+            LocalDate lb = createdDate.toLocalDate();
+            return String.format("[%d] %s, %d-%d-%d", oid, projectName, lb.getYear(), lb.getMonthValue(), lb.getDayOfMonth());
+        }
+    }
+
 }
