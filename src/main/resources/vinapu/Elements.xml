@@ -27,6 +27,6 @@
     </resultMap>
 
     <select id="fetchElementLoads" resultMap="elementLoadMap">
-        select * from vinapu.v_element_loads where sys_id=#{sysId} order by n1
+        select * from vinapu.v_element_loads where sys_id=#{sysId} order by oid
     </select>
 </mapper>
