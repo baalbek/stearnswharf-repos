@@ -12,4 +12,10 @@
     <select id="fetchProjects" resultMap="projectMap">
         select oid,pn,created_date from geometry.projects order by pn
     </select>
+    <insert id="insertProject"
+            parameterType="stearnswharf.geometry.ProjectBean"
+            useGeneratedKeys="true"
+            keyProperty="oid" >
+        insert into geometry.projects (pn) values (#{projectName})
+    </insert>
 </mapper>
