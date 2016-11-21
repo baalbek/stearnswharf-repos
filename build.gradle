@@ -19,3 +19,9 @@ dependencies {
 task cj(type: Copy, dependsOn: [build]) {
     into '../harborview/dist' from new File("$libsDir/stearnswharf-${version}.jar")
 }
+
+def jarFile = new File("$libsDir/stearnswharf-${version}.jar")
+
+task copyToParentProject(type: Copy, dependsOn: jar) {
+    into parentDist from jarFile
+}
