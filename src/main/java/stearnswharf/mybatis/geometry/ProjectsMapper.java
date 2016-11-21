@@ -6,6 +6,7 @@ import java.util.List;
 
 public interface ProjectsMapper {
     List<ProjectBean> fetchProjects();
+    void insertProject(ProjectBean project);
 
     /*
     List<LocationBean> fetchLocations(@Param("pid") int projectId);
