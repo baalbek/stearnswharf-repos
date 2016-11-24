@@ -14,5 +14,11 @@
         select oid,sys_name,created_date from geometry.systems where loc_id=#{locId}
         order by sys_name
     </select>
+    <insert id="insertSystem"
+            parameterType="stearnswharf.geometry.SystemBean"
+            useGeneratedKeys="true"
+            keyProperty="oid" >
+        insert into geometry.systems (loc_id,sys_name) values (#{locationId},#{systemName})
+    </insert>
 
 </mapper>

@@ -11,4 +11,5 @@ import java.util.List;
  */
 public interface LocationsMapper {
     List<LocationBean> fetchLocations(@Param("projectId") int projectId);
+    void insertLocation(LocationBean location);
 }

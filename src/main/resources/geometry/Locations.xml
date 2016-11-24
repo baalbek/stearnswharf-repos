@@ -5,10 +5,17 @@
 
     <resultMap id="locationMap" type="stearnswharf.geometry.LocationBean">
         <id column="oid" property="oid"/>
+        <result column="project_id" property="projectId" />
         <result column="loc_name" property="locationName" />
     </resultMap>
 
     <select id="fetchLocations" resultMap="locationMap">
         select oid,loc_name from geometry.locations where project_id=#{projectId} order by loc_name
     </select>
+    <insert id="insertLocation"
+            parameterType="stearnswharf.geometry.LocationBean"
+            useGeneratedKeys="true"
+            keyProperty="oid" >
+        insert into geometry.locations (project_id,loc_name) values (#{projectId},#{locationName})
+    </insert>
 </mapper>

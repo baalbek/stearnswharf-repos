@@ -11,5 +11,6 @@ import java.util.List;
  */
 public interface SystemsMapper {
     List<SystemBean> fetchSystems(@Param("locId") int locationId);
+    void insertSystem(SystemBean systemBean);
 
 }
