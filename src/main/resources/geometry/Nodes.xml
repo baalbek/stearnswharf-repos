@@ -4,8 +4,7 @@
 <mapper namespace="stearnswharf.mybatis.geometry.NodesMapper">
     <resultMap id="nodeMap" type="stearnswharf.geometry.NodeBean">
         <id column="oid" property="oid"/>
-        <result column="project_id" property="locationId" />
-        <result column="coord_sys" property="coordSys" />
+        <result column="loc_id" property="locationId" />
         <result column="x" property="x" />
         <result column="y" property="y" />
         <result column="z" property="z" />
@@ -15,6 +14,14 @@
         <result column="dsc" property="dsc" />
     </resultMap>
 
+    <select id="locationNodes" resultMap="nodeMap">
+        select n.oid,n.loc_id,n.x,n.y,n.z,n.dofx,n.dofz,n.dofm,n.dsc
+        from geometry.nodes n
+        where n.loc_id=#{locid}
+        order by n.dsc
+    </select>
+
+    <!--
     <select id="fetchAllNodes" resultMap="nodeMap">
         select oid,project_id,coord_sys,x,y,z,dofx,dofz,dofm,dsc from construction.nodes
         where project_id=#{pid} order by dsc
@@ -40,12 +47,10 @@
         on s.project_id = n.project_id where s.oid=#{sysid} and n.coord_sys=#{cosyid}
         order by n.dsc
     </select>
-    <!--
     <select id="systemNodes" resultMap="nodeMap">
         select n.* from nodes n where exists
         (select 1 from vinapu_elements e join systems s on s.oid=e.sys_id where s.oid=#{sysId} and n.oid=e.n1)
-        union
-        select n.* from nodes n where exists
+        unionselect n.* from nodes n where exists
         (select 1 from vinapu_elements e join systems s on s.oid=e.sys_id where s.oid=#{sysId} and n.oid=e.n2)
         order by 8
     </select>

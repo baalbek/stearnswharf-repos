@@ -5,6 +5,7 @@ import java.util.List;
 import stearnswharf.geometry.NodeBean;
 
 public interface NodesMapper {
+    /*
     List<NodeBean> fetchAllNodes(@Param("pid") int projectId);
 
     List<NodeBean> fetchNodes(@Param("pid") int projectId,
@@ -16,4 +17,6 @@ public interface NodesMapper {
     List<NodeBean> systemNodes( @Param("sysid") int systemId,
                                 @Param("cosyid") int coordSystId);
 
+    //*/
+    List<NodeBean> locationNodes(@Param("locid") int locationId);
 }
