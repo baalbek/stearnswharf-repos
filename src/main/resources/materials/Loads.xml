@@ -5,8 +5,9 @@
 
     <resultMap id="loadMap" type="stearnswharf.materials.LoadBean">
         <id column="oid" property="oid"/>
-        <result column="project_id" property="projectId" />
-        <result column="loc_name" property="locationName" />
+        <result column="dsc" property="dsc" />
+        <result column="lcat" property="loadCategory" />
+        <result column="q" property="q" />
     </resultMap>
 
     <select id="fetchLoads" resultMap="loadMap">

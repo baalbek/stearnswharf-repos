@@ -81,8 +81,7 @@ public class ProjectBean {
         return PersistentArrayMap.create(myMap);
     }
 
-    @Override
-    public String toString(){
+    public String toHtml(){
         if (oid == -1) {
             return "-";
         }
