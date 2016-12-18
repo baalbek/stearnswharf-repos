@@ -7,7 +7,6 @@ package stearnswharf.materials;
 public class LoadBean {
     private int oid;
     private String dsc;
-    private double loadFactor;
     private int loadCategory;
     private double q;
 
@@ -25,14 +24,6 @@ public class LoadBean {
 
     public void setDsc(String dsc) {
         this.dsc = dsc;
-    }
-
-    public double getLoadFactor() {
-        return loadFactor;
-    }
-
-    public void setLoadFactor(double loadFactor) {
-        this.loadFactor = loadFactor;
     }
 
     public int getLoadCategory() {
