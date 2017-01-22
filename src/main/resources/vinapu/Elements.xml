@@ -29,4 +29,19 @@
     <select id="fetchElementLoads" resultMap="elementLoadMap">
         select * from vinapu.v_element_loads where sys_id=#{sysId} order by oid
     </select>
+
+    <insert id="insertElement"
+            parameterType="stearnswharf.vinapu.elements.ElementLoadBean"
+            useGeneratedKeys="true"
+            keyProperty="oid" >
+        insert into vinapu.elements (sys_id,dsc,n1,n2,plw,w1)
+        values (#{systemId},#{dsc},#{n1},#{n2},#{plw},#{w1})
+    </insert>
+    <insert id="insertElementLoad"
+            parameterType="stearnswharf.vinapu.elements.ElementLoadBean"
+            useGeneratedKeys="true"
+            keyProperty="oid" >
+        insert into vinapu.element_loads (el_id,ld_id,load_factor,form_factor)
+        values (#{oid},#{loadId},#{loadFactor},#{formFactor})
+    </insert>
 </mapper>
