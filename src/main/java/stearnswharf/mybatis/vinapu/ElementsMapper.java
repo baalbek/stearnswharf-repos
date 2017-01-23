@@ -11,4 +11,7 @@ import java.util.List;
  */
 public interface ElementsMapper {
     List<ElementLoadBean> fetchElementLoads(@Param("sysId") int sysId);
+
+    void insertElement(ElementLoadBean element);
+    void insertElementLoad(ElementLoadBean element);
 }
