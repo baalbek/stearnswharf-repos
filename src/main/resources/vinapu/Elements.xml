@@ -34,8 +34,8 @@
             parameterType="stearnswharf.vinapu.elements.ElementLoadBean"
             useGeneratedKeys="true"
             keyProperty="oid" >
-        insert into vinapu.elements (sys_id,dsc,n1,n2,plw,w1)
-        values (#{systemId},#{dsc},#{n1},#{n2},#{plw},#{w1})
+        insert into vinapu.elements (sys_id,dsc,element_type,n1,n2,plw,w1,w2)
+        values (#{systemId},#{dsc},#{elementType},#{n1},#{n2},#{plw},#{w1},#{w2})
     </insert>
     <insert id="insertElementLoad"
             parameterType="stearnswharf.vinapu.elements.ElementLoadBean"
